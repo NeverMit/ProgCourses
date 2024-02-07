@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ProgCourses</title>
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+        .tabs {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-left">
+        ProgCourses
+    </div>
+    <div class="header-right">
+        <div class="tabs">
+            <a href="/about">About</a> | <a href="/courses">Courses</a>
+        </div>
+    </div>
+</header>
+
+<div class="content">
+    <h1>Best courses are here!</h1>
+    <style>
+        .content {
+            text-align: center;
+        }
+
+        .course-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .course-images img {
+            width: 200px; /* Установите нужную ширину */
+            height: 150px; /* Установите нужную высоту */
+        }
+    </style>
+    <img src="/images/python.png" alt="Python Course">
+    <img src="/images/java.png" alt="Java Course">
+    <img src="/images/c++.png" alt="C++ Course">
+</div>
+</body>
+</html>

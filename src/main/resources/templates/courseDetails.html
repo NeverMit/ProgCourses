@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Courses</title>
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+        }
+
+        .tabs {
+            display: flex;
+        }
+
+        .tab {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>ProgCourses</h1>
+    <div class="tabs">
+        <a href="/about">About</a> | <a href="/">Home</a> | <a href="/courses">Courses</a>
+    </div>
+</div>
+<div class="content">
+    <div class="courses">
+        <h2>Our courses</h2>
+        <div th:each="el:${course}">
+            <h1 th:text="${el.title}"/>
+            <p th:text="'teacherName: '+${el.teacherName}"/>
+            <p th:text="'price: '+${el.price}+' rub/month'"/>
+            <p th:text="'timeOfStudying: '+${el.timeOfStudying}+' months'"/>
+            <a th:href="'/courses'">Back to courses</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
