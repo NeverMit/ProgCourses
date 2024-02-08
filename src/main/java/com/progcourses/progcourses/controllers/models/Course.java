@@ -4,10 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
@@ -19,15 +16,21 @@ public class Course {
     private String title;
     private int price;
     private int timeOfStudying;
+    private String description;
 
-    public Course(String title,String teacherName,int price,int timeOfStudying) {
+    public Course(String title,String teacherName,int price,int timeOfStudying,String description) {
         this.teacherName = teacherName;
         this.title = title;
         this.price = price;
         this.timeOfStudying = timeOfStudying;
+        this.description=description;
     }
-
-    public Course() {
-
+    public Course() {}
+    public void setAllFieldsExceptId(String title, String teacherName,int price,int timeOfStudying, String description){
+        this.title=title;
+        this.teacherName=teacherName;
+        this.price=price;
+        this.timeOfStudying=timeOfStudying;
+        this.description=description;
     }
 }

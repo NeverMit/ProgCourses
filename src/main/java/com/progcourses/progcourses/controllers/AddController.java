@@ -22,8 +22,9 @@ public class AddController {
                                 @RequestParam String teacherName,
                                 @RequestParam int price,
                                 @RequestParam int timeOfStudying,
+                                @RequestParam String description,
                                 Model model){
-        Course course=new Course(title,teacherName,price,timeOfStudying);
+        Course course=new Course(title,teacherName,price,timeOfStudying,description);
         courseRepository.save(course);
         return "redirect:/courses";
     }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Courses</title>
+    <title>Actions</title>
     <style>
         .header {
             display: flex;
@@ -24,22 +24,20 @@
 </head>
 <body>
 <div class="header">
-    <h1>ProgCourses</h1>
-    <div class="tabs">
-        <a href="/about">About</a> | <a href="/">Home</a> | <a href="/courses">Courses</a>
-    </div>
+    <h1>ProgCourse:adminPanel</h1>
 </div>
 <div class="content">
     <div class="courses">
-        <h2>Detailed information about course</h2>
-        <div th:each="el:${course}">
-            <h1 th:text="${el.title}"/>
-            <p th:text="'teacherName: '+${el.teacherName}"/>
-            <p th:text="'price: '+${el.price}+' rub/month'"/>
-            <p th:text="'timeOfStudying: '+${el.timeOfStudying}+' months'"/>
-            <p th:text="'description: '+${el.description}"/>
-            <a th:href="'/courses'">Back to courses</a>
+        <h2>Our courses</h2>
+        <div th:each="el:${courses}">
+            <h3 th:text="${el.title}"/>
+            <a th:href="'/action/'+${el.id}">More...</a>
+            <a th:href="'/action/'+${el.id}+'/edit'" class="btn btn-warning">Edit</a>
+            <form th:action="'/action/'+${el.id}+'/delete'" method="post">
+                <button class="btn btn-warning" type="submit">Delete</button>
+            </form>
         </div>
+        <a th:href="'/add'">Back to add</a>
     </div>
 </div>
 </body>
