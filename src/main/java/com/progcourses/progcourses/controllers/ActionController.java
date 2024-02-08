@@ -3,6 +3,7 @@ package com.progcourses.progcourses.controllers;
 import com.progcourses.progcourses.controllers.models.Course;
 import com.progcourses.progcourses.repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +17,14 @@ import java.util.Optional;
 public class ActionController {
     @Autowired
     private CourseRepository courseRepository;
+    @PostAuthorize("hasRole('ADMIN')")
     @GetMapping("/action")
     public String courses(Model model){
         Iterable<Course> courses=courseRepository.findAll();
         model.addAttribute("courses",courses);
         return "action";
     }
+    @PostAuthorize("hasRole('ADMIN')")
     @GetMapping("/action/{id}")
     public String showActionsCourseDetails(@PathVariable(value = "id") Long id, Model model){
         Optional<Course> course=courseRepository.findById(id);

@@ -3,6 +3,7 @@ package com.progcourses.progcourses.controllers;
 import com.progcourses.progcourses.controllers.models.Course;
 import com.progcourses.progcourses.repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class EditController {
     @Autowired
     private CourseRepository courseRepository;
+    @PostAuthorize("hasRole('ADMIN')")
     @GetMapping("/action/{id}/edit")
     public String editCourse(@PathVariable(value = "id") Long id, Model model){
         Optional<Course> course=courseRepository.findById(id);
@@ -26,6 +28,7 @@ public class EditController {
         model.addAttribute("course",res);
         return "course-edit";
     }
+    @PostAuthorize("hasRole('ADMIN')")
     @PostMapping("/action/{id}/edit")
     public String postEditCourse(@PathVariable(value = "id") Long id,
                                  @RequestParam String title,
