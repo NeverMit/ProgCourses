@@ -31,13 +31,13 @@
         <h2>Our courses</h2>
         <div th:each="el:${courses}">
             <h3 th:text="${el.title}"/>
-            <a th:href="'/action/'+${el.id}">More...</a>
-            <a th:href="'/action/'+${el.id}+'/edit'" class="btn btn-warning">Edit</a>
-            <form th:action="'/action/'+${el.id}+'/delete'" method="post">
+            <a th:href="'/admin/action/'+${el.id}">More...</a>
+            <a th:href="'/admin/action/'+${el.id}+'/edit'" class="btn btn-warning">Edit</a>
+            <form th:action="'/admin/action/'+${el.id}+'/delete'" method="post">
                 <button class="btn btn-warning" type="submit">Delete</button>
             </form>
         </div>
-        <a th:href="'/add'">Back to add</a>
+        <a th:href="'/admin/add'">Back to add</a>
     </div>
 </div>
 </body>
