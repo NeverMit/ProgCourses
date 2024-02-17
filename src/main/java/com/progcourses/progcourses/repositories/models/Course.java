@@ -22,9 +22,21 @@ public class Course {
     private int price;
     private int timeOfStudying;
     private String description;
-    public void setAllFieldsExceptId(String title, String teacherName,int price,int timeOfStudying, String description){
-        this.title=title;
+    public Course(String teacherName,String title,
+                  int price,int timeOfStudying,
+                  String description){
         this.teacherName=teacherName;
+        this.title=title;
+        this.price=price;
+        this.timeOfStudying=timeOfStudying;
+        this.description=description;
+    }
+
+    public void setAllFieldsExceptId(String title, String teacherName,
+                                     int price, int timeOfStudying,
+                                     String description){
+        this.teacherName=teacherName;
+        this.title=title;
         this.price=price;
         this.timeOfStudying=timeOfStudying;
         this.description=description;

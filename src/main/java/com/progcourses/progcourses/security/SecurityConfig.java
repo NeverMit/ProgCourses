@@ -35,13 +35,14 @@ public class SecurityConfig implements WebMvcConfigurer {
         return http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/", "/about", "/register", "/login").permitAll()
-                        .requestMatchers("/courses", "/courses/**").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("/courses", "/courses/**").hasAnyRole("USER","ADMIN")
                         .anyRequest().hasRole("ADMIN")
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()
                         .defaultSuccessUrl("/courses", true))
+                .csrf().disable()
                 .build();
     }
     @Override

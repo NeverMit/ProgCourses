@@ -20,13 +20,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 public class AdminController {
-    //private final UserService userService;
     private final CourseService courseService;
-   /* @GetMapping("/admin")
-    public String admin(Model model){
-        model.addAttribute("users",userService.findAll());
-        return "admin";
-    }*/
     @GetMapping("/admin/add")
     public String addCourse(){
         return "add";
@@ -38,8 +32,7 @@ public class AdminController {
                                 @RequestParam int timeOfStudying,
                                 @RequestParam String description
     ){
-        Course course=new Course();
-        course.setAllFieldsExceptId(title,teacherName,price,timeOfStudying,description);
+        Course course=new Course(title,teacherName,price,timeOfStudying,description);
         courseService.save(course);
         return "redirect:/admin/action";
     }
@@ -61,7 +54,7 @@ public class AdminController {
     public String deleteCourse(@PathVariable(value = "id")Long id){
         Course course=courseService.findById(id).orElseThrow();
         courseService.delete(course);
-        return "redirect:/action";
+        return "redirect:/admin/action";
     }
     @GetMapping("/admin/action/{id}/edit")
     public String editCourse(@PathVariable(value = "id") Long id, Model model){
